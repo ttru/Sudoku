@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sudoku</title>
+    <link rel="stylesheet" href="sudoku.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+    <script src="sudoku.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <!-- left -->
+        <div class="col-md-4"></div>
+
+        <!-- center (actually has content) -->
+        <div class="col-md-4">
+          <h1 class="text-center">Sudoku</h1>
+          <div id="sudoku-frame">
+            <div id="sudoku-grid"></div>
+          </div>
+          <div id="button-container">
+            <button class="btn btn-primary btn-lg center-block">Solve</button>
+          </div>
+          <div id="instructions" class="text-center">Tap the cells in the sudoku grid to change their numbers.</div>
+        </div>
+
+        <!-- right -->
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+  </body>
+</html>
