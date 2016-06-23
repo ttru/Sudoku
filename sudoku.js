@@ -57,7 +57,7 @@ function createGrid() {
 function createGrid2() {
   for (var i = 0; i < 81; i++) {
     var square = createSquare2();
-    $(square).find(".s-cell-value").html("" + i);
+    $(square).find(".s-cell-value").html("" + (i % 9));
     $(square).css("border", "1px solid black");
     if (Math.floor(i / 9) === 0) {
       $(square).css("border-top", "4px solid black");
