@@ -3,14 +3,17 @@
 * http://stackoverflow.com/questions/20456694/grid-of-responsive-squares
 */
 
+#button-container {
+  clear: both;
+  padding: 5%;
+}
+
 .sudoku-square {
   float: left;
   position: relative;
-  width: calc(100% / 3);
-  padding-bottom : calc(100% / 3 - 2px); /* = width for a 1:1 aspect ratio */
-  /* margin:1.66%; */
+  width: calc(100% / 9);
+  padding-bottom: calc(100% / 9 - 2px);
   overflow: hidden;
-  border: 1px solid black;
 }
 
 .sudoku-square-content {
@@ -33,49 +36,12 @@
   width: 100%;
 }
 
-#button-container {
-  clear: both;
-  padding: 5%;
-}
-
-#sudoku-frame {
-  float: left;
-  position: relative;
-  width: calc(100% + 4px);
-  border: 2px solid black;
-  margin-left: -2px;
-}
-
-.s-square {
-  float: left;
-  position: relative;
-  width: calc(100% / 9);
-  padding-bottom : calc(100% / 9 - 2px); /* = width for a 1:1 aspect ratio */
-  /* margin:1.66%; */
-  overflow: hidden;
-}
-
-.s-square-content {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-}
-
-.s-square-table{
-  display: table;
-  height: 100%;
-  width: 100%;
-}
-
-.s-square-table-cell {
-  display: table-cell;
-  vertical-align: middle;
-  height: 100%;
-  width: 100%;
-}
-
-.s-cell-value {
+.sudoku-cell-value {
   font-size: x-large;
   font-weight: bold;
+  font-color: black;
+  /* http://stackoverflow.com/questions/7018324/how-do-i-stop-highlighting-of-a-div-element-when-double-clicking-on */
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
 }
