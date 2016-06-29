@@ -18,16 +18,23 @@ function createSquare() {
   cellValue.addClass("sudoku-cell-value");
   squareTableCell.append(cellValue);
 
-  square.click(function() {
-    var currentValue = square.find(".sudoku-cell-value").html();
-    if (currentValue === "") {
-      square.find(".sudoku-cell-value").html("1");
-    } else if (currentValue === "9") {
-      square.find(".sudoku-cell-value").html("");
+  var input = $("<input></input>");
+  input.addClass("text-center");
+  input.addClass("sudoku-input");
+  input.focus(function() {
+    input.val("");
+  });
+  input.keydown(function(event) {
+    if (!(event.which > 48 && event.which < 58)) {
+      /* Disallow any values in input outside of 1-9. */
+      event.preventDefault();
     } else {
-      square.find(".sudoku-cell-value").html("" + (Number(currentValue) + 1));
+      /* Allow only one digit in input. */
+      input.val("");
     }
   });
+
+  cellValue.append(input);
 
   return square;
 }
