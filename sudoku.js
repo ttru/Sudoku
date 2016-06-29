@@ -21,6 +21,8 @@ function createSquare() {
   var input = $("<input></input>");
   input.addClass("text-center");
   input.addClass("sudoku-input");
+  input.attr("pattern", "[0-9]*");
+  input.attr("inputmode", "numeric");
   input.focus(function() {
     input.val("");
   });
