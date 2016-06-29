@@ -10,23 +10,25 @@
   <body>
     <div class="container">
       <div class="row">
+        <h1 class="text-center">Sudoku</h1>
+      </div>
+      <div class="row">
         <!-- left -->
         <div class="col-md-4"></div>
 
         <!-- center (actually has content) -->
         <div class="col-md-4">
-          <h1 class="text-center">Sudoku</h1>
-          <div id="sudoku-frame">
-            <div id="sudoku-grid"></div>
-          </div>
+          <div id="sudoku-grid"></div>
           <div id="button-container">
-            <button class="btn btn-primary btn-lg center-block">Solve</button>
+            <button class="btn btn-primary btn-lg btn-block">Solve</button>
           </div>
-          <div id="instructions" class="text-center">Tap the cells in the sudoku grid to change their numbers.</div>
         </div>
 
         <!-- right -->
         <div class="col-md-4"></div>
+      </div>
+      <div class="row">
+        <div id="instructions" class="text-center">Tap the cells in the sudoku grid to change their numbers.</div>
       </div>
     </div>
   </body>
