@@ -23,7 +23,7 @@ function createSquare() {
   input.addClass("sudoku-input");
   input.attr("pattern", "[0-9]*");
   input.attr("inputmode", "numeric");
-  input.focus(function() {
+  input.click(function() {
     input.val("");
   });
   input.keydown(function(event) {
@@ -76,4 +76,32 @@ function createGrid() {
 
 $(document).ready(function() {
   createGrid();
+  $("#solve-button").click(function() {
+    var children = $("#sudoku-grid").children();
+    var puzzleString = "";
+    for (var i = 0; i < 81; i++) {
+      var cellVal = $(children[i]).find(".sudoku-input").val();
+      if (cellVal === "") {
+        puzzleString += " ";
+      } else {
+        puzzleString += cellVal;
+      }
+    }
+    var solutionString = solveFromString(puzzleString);
+    if (!solutionString) alert("No solution!"); // TODO: update this
+    for (var i = 0; i < 81; i++) {
+      var input = $(children[i]).find(".sudoku-input");
+      var cellVal = input.val();
+      if (cellVal === "") {
+        input.parent().removeClass("sudoku-cell-value");
+        input.parent().addClass("sudoku-solution-value");
+      }
+      input.val(solutionString[i]);
+      input.attr("readonly", true);
+      input.unbind("click");
+    }
+    // TODO: add buttons to clear or reset to allow multiple use
+    $(this).html("Solved!");
+    $(this).attr("disabled", true);
+  });
 });

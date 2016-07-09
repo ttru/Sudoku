@@ -39,7 +39,17 @@
 .sudoku-cell-value {
   font-size: x-large;
   font-weight: bold;
-  font-color: black;
+  color: black;
+  /* http://stackoverflow.com/questions/7018324/how-do-i-stop-highlighting-of-a-div-element-when-double-clicking-on */
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+}
+
+.sudoku-solution-value {
+  font-size: x-large;
+  font-weight: bold;
+  color: gray;
   /* http://stackoverflow.com/questions/7018324/how-do-i-stop-highlighting-of-a-div-element-when-double-clicking-on */
   -webkit-user-select: none; /* Chrome/Safari */
   -moz-user-select: none; /* Firefox */

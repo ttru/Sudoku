@@ -11,7 +11,7 @@ var DataObject = function(rowName, column) {
   this.down = null;
   this.rowName = rowName;
   this.column = column;
-}
+};
 
 // Represents column object (header of each column).
 var ColumnObject = function(columnName) {
@@ -22,7 +22,7 @@ var ColumnObject = function(columnName) {
   this.up = null;
   this.down = null;
   this.column = this;
-}
+};
 
 // Matrix is mxn 2d 0-1 array, rowNames is length m, colNames is length n.
 var DLXTable = function(matrix, rowNames, colNames) {
@@ -73,7 +73,7 @@ var DLXTable = function(matrix, rowNames, colNames) {
       leftmostNode.left = rightmostNode;
     }
   }
-}
+};
 
 // For debugging.
 DLXTable.prototype.printInfo = function() {
@@ -101,7 +101,7 @@ DLXTable.prototype.printInfo = function() {
   this.dataArray.forEach(function(item) {
     console.log("(" + item.rowName + ", " + item.column.columnName + ")");
   });
-}
+};
 
 // Returns an array of names of rows that form an exact cover. If no such cover
 // is possible, returns 0;
@@ -109,7 +109,7 @@ DLXTable.prototype.search = function() {
   var results = [];
   this.searchRec([], results);
   return results;
-}
+};
 
 // Loads chosen names of chosen rows into results.
 DLXTable.prototype.searchRec = function(objArray, results) {
@@ -134,7 +134,7 @@ DLXTable.prototype.searchRec = function(objArray, results) {
     }
   }
   this.uncover(column);
-}
+};
 
 // Covers a column.
 DLXTable.prototype.cover = function(column) {
@@ -147,7 +147,16 @@ DLXTable.prototype.cover = function(column) {
       j.column.size--;
     }
   }
-}
+};
+
+// Covers a column via name.
+DLXTable.prototype.coverByName = function(columnName) {
+  for (var column = this.root.right; column != this.root; column = column.right) {
+    if (column.columnName === columnName) break;
+  }
+  if (column === this.root) return;
+  this.cover(column);
+};
 
 // Uncovers a column.
 DLXTable.prototype.uncover = function(column) {
@@ -160,7 +169,7 @@ DLXTable.prototype.uncover = function(column) {
   }
   column.right.left = column;
   column.left.right = column;
-}
+};
 
 // Returns the column object with the smallest size.
 DLXTable.prototype.chooseColumn = function() {
@@ -171,7 +180,7 @@ DLXTable.prototype.chooseColumn = function() {
     }
   }
   return chosenColumn;
-}
+};
 
 function testWithKnuthExample() {
   var test = new DLXTable([
@@ -185,4 +194,4 @@ function testWithKnuthExample() {
   var testResults = test.search();
   console.log(testResults); // should have ['IV', 'I', 'V']
 }
-testWithKnuthExample();
+//testWithKnuthExample();
