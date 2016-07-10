@@ -26,7 +26,7 @@ function createSquare() {
   input.click(function() {
     input.val("");
   });
-  input.keydown(function(event) {
+  input.keypress(function(event) {
     if (!(event.which > 48 && event.which < 58)) {
       /* Disallow any values in input outside of 1-9. */
       event.preventDefault();
